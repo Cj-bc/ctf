@@ -1,0 +1,3 @@
+*.swp
+*.swc
+.mypy_cache
