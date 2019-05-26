@@ -1,13 +1,13 @@
-from Crypto.Util.number import long_to_bytes
+from Crypto.Util.number import long_to_bytes                                                                                                                  
 # Logic of F ^ r
 # F ^ r | r == 1 && F % 2 == 0 = F + 1
 #       | r == 1 && F % 2 == 1 = F - 1
-#       | r == 2 && 2bit目が0  = F + 2
-#       | r == 2 && 2bit目が1  = F - 2
-#       | r == 4 && 3bit目が0  = F + 4
-#       | r == 4 && 3bit目が1  = F - 4
+#       | r == 2 && 2bit 0  = F + 2
+#       | r == 2 && 2bit 1  = F - 2
+#       | r == 4 && 3bit 0  = F + 4
+#       | r == 4 && 3bit 1  = F - 4
 
-C = 0  # Insert here
+C = 82095464138999038561660001216421591610173745734011075257833754285976853929684218975096276189770030997755430833265310096322846163996593906750141663232969276669064973339172970906791978577844232348991785160358927670924383670114242589045107554707076682668422130048831018206656008994878220426287718128558646983268 # Insert here
 
 # Think 'N' is enough big so that
 # doesn't affect result of `pow(FLAG ^r, 3)`
@@ -22,7 +22,7 @@ possible_FLAG = []
 # As I don't know what r is, I'll try all pattern.
 # It's obvious that `r` should be one of [0,1,2,3]
 for r in range(4):
-    possible_FLAG += FLAG_r ^ r
+    possible_FLAG += str(FLAG_r).encode() ^ str(r).encode()
 
 map(possible_FLAG, long_to_bytes)
 for f in possible_FLAG:
