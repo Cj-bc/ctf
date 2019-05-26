@@ -22,9 +22,10 @@ possible_FLAG = []
 # As I don't know what r is, I'll try all pattern.
 # It's obvious that `r` should be one of [0,1,2,3]
 for r in range(4):
-    possible_FLAG += str(FLAG_r).encode() ^ str(r).encode()
+    print(str(FLAG_r))
+    possible_FLAG.append(int.from_bytes(bytes([str(FLAG_r).encode()[0] ^ str(r).encode()[0]]), 'big'))
 
-map(possible_FLAG, long_to_bytes)
+map(lambda x: long_to_bytes(x), possible_FLAG)
 for f in possible_FLAG:
     print(f)
 
