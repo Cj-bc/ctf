@@ -21,6 +21,11 @@ lookup :: Cells -> Int -> Cell
 lookup (c@(Cell num _ _):cs) x | x == num  = c
                                    | otherwise = Cell.lookup cs x
 
+-- Returns Cells just drops given cell
+rest :: Cells -> Cell -> Cells
+rest [] _ = []
+rest (c@(Cell num _ _):cs) drp@(Cell x _ _) | x == num = cs
+                                             | otherwise = c : rest cs drp
 
 
 swap :: Cells -> Int -> Int -> Cells
