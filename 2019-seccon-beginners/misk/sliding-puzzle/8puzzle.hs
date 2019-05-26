@@ -1,4 +1,5 @@
-import Data.List
+import Cell (Cell, Cells)
+import qualified Cell
 
 data Status = Open
             | Close
@@ -18,5 +19,5 @@ heuristic (Node cells _ _ _) goal = sum $ zipWith (manhattan) (sort cells) (sort
 
 
 main = do
-        let startCells = setCells [0,2,3,6,7,1,8,4,5]
-            goalCells  = setCells [0,1,2,3,4,5,6,7,8]
+        let startCells = Cell.set [0,2,3,6,7,1,8,4,5]
+            goalCells  = Cell.set [0,1,2,3,4,5,6,7,8]
