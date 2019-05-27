@@ -7,7 +7,7 @@ module Cell
 ) where
 
 --   Cell = (Number, x, y)
-data Cell = Cell Int Int Int
+data Cell = Cell Int Int Int deriving (Eq)
 type Cells = [Cell]
 
 
